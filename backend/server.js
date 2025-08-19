@@ -13,11 +13,6 @@ app.use(express.json());
 // Routes
 app.use('/api/tickets', ticketRoutes);
 
-// Test route
-app.get('/', (req, res) => {
-  res.send('Support Ticket API is running...');
-});
-
 // Start server
 app.listen(PORT, () => {
   console.log(`✅ Server started on http://localhost:${PORT}`);

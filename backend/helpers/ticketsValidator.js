@@ -17,7 +17,13 @@ const createTicketSchema = Joi.object({
   })
 });
 
-
+// Schema for updating status
+const updateStatusSchema = Joi.object({
+  status: Joi.string().valid('Open', 'In Progress', 'Closed').required().messages({
+    'any.only': 'Status must be Open, In Progress, or Closed',
+    'string.empty': 'Status is required'
+  })
+});
 
 // Middleware function for create ticket validation
 const validateCreateTicket = (req, res, next) => {
@@ -30,4 +36,15 @@ const validateCreateTicket = (req, res, next) => {
   next();
 };
 
-module.exports = { validateCreateTicket };
+// Middleware function for update ticket validation
+const validateUpdateStatus = (req, res, next) => {
+  const { error } = updateStatusSchema.validate(req.body, { abortEarly: false });
+  if (error) {
+    return res.status(400).json({
+      errors: error.details.map(err => err.message)
+    });
+  }
+  next();
+};
+
+module.exports = { validateCreateTicket, validateUpdateStatus };
