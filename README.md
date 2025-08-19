@@ -11,6 +11,6 @@ A mobile-first responsive support ticket application built using **React, Node.j
 - **Frontend:** React, Tailwind CSS, Axios
 - **Backend:** Node.js, Express.js
 - **Database:** PostgreSQL
-- **Bonus:** Docker, GitHub Actions, Deployment on Render & Vercel
+- **Bonus:** Docker, GitHub Actions
 
 ## Project Structure
