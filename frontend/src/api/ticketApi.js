@@ -11,3 +11,25 @@ export const createTicket = async (ticketData) => {
     throw error;
   }
 };
+
+// Get all tickets
+export const getTickets = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}/tickets`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching tickets:", error);
+    throw error;
+  }
+};
+
+// Update ticket status
+export const updateTicketStatus = async (id, status) => {
+  try {
+    const response = await axios.put(`${BASE_URL}/tickets/${id}`, { status });
+    return response.data;
+  } catch (error) {
+    console.error("Error updating ticket:", error);
+    throw error;
+  }
+};
